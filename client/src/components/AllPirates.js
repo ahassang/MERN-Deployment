@@ -35,48 +35,35 @@ const AllPirates = (props) => {
 
 
     return (
-        <div>
-            <h2>All Pirates</h2>
-            <button onClick={() => navigate('/pirate/new')}>Create a Pirate</button>
+        <div className="wrapper">
+            <div className="header">
+
+                <h2 className="header-contents-1">Pirate Crew</h2>
+                <button className="header-contents-2" onClick={() => navigate('/pirate/new')}>Add Pirate</button>
+            </div>
             {
                 allPirates.map((pirate, index) => (
                     <div key={index}>
-                        <hr />
-                        <img className="pirate-profile"
-                            src={pirate.piratePictureUrl}
-                            alt={pirate.pirateName}
-                        />
-                        <img className="pirate-profile"
-                            src={pirate.pirateShipPictureUrl}
-                            alt={pirate.pirateShip}
-                        />
-                        <h4>{`${pirate.pirateName}'s Ship of Choice: The ${pirate.pirateShip}`}</h4>
-                        <h4>{`Rank: ${pirate.pirateSkill}`}</h4>
-                        <h4>{`Documented Year of Piracy : ${pirate.startDate}`}</h4>
-                        <div className="true-false-sct">
-                            <hr />
-                            <h4>(True or False)</h4>
-                            <h4>{` Has Pirate seen battle? ${pirate.pirateVeteran}`}</h4>
-                            <ToggleCannon/>
-                            <h4>{`Does this Pirate have an eye-patch? ${pirate.pirateEyePatch}`}</h4>
-                            <ToggleEyePatch />
-                            <h4>{` Does this Pirate have a peg-leg? ${pirate.piratePegLeg}`}</h4>
-                            <TogglePegLeg/>
-                            <h4>{` Does this Pirate have a hook-hand? ${pirate.pirateHookHand}`}</h4>
-                            <ToggleHookHand/>
-                            <hr />
+                        <div className="single-pirate-section">
+                        <h3>
+                            {pirate.pirateName}
+                        </h3>
+                        
+
+                            <img className="pirate-profile"
+                                src={pirate.piratePictureUrl}
+                                alt={pirate.pirateName}
+                            />
+                            <button className="view-pirate-btn"
+                                onClick={() => navigate(`/pirate/${pirate._id}`)}
+                            >View Pirate </button>
+                            <button className="maroon-btn"
+                                onClick={() => deletePirate(pirate._id)}>Maroon this Pirate!</button>
+
                         </div>
-                        <h4> {`Base of operations: ${pirate.pirateOrigin}`}</h4>
-                        <h4>{`Bio: ${pirate.pirateAge}, ${pirate.pirateSex}`}</h4>
-                        <h4>{`Preferred Drink: ${pirate.pirateDiet}`}</h4>
-                        <button className="all-pirate-bottom-btn"
-                            onClick={() => navigate(`/pirate/${pirate._id}`)}
-                        >View Pirate Ship Details</button>
-                        <button
-                            onClick={() => navigate(`/pirate/${pirate._id}/edit`)}
-                        >Edit Ye 'ol Pirate</button>
-                        <button
-                         onClick={() => deletePirate(pirate._id)}>Maroon this Pirate!(delete)</button>
+
+
+
                     </div>
                 ))
             }

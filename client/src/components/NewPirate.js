@@ -17,9 +17,9 @@ const NewPirate = (props) => {
     const [startDate, setStartDate] = useState("1640-01-01")//look into this
     const [pirateSkill, setPirateSkill] = useState("Pirate-Lunch-Lady");
     const [pirateVeteran, setPirateVeteran] = useState(false);
-    const [pirateEyePatch, setPirateEyePatch] = useState(false);
-    const [piratePegLeg, setPiratePegLeg] = useState(false);
-    const [pirateHookHand, setPirateHookHand] = useState(false);
+    const [pirateEyePatch, setPirateEyePatch] = useState(true);
+    const [piratePegLeg, setPiratePegLeg] = useState(true);
+    const [pirateHookHand, setPirateHookHand] = useState(true);
     const [pirateDiet, setPirateDiet] = useState("Rum");
     const [piratePictureUrl, setPiratePictureUrl] = useState("https://i.pinimg.com/736x/53/05/3d/53053d19b1e1b1b7e5703a8f448a4a4d--pirate-symbols-pirate-skull.jpg");
     const [pirateShipPictureUrl, setPirateShipPictureUrl] = useState("https://media.istockphoto.com/vectors/silhouette-of-a-pirate-ship-vector-id1003207066?k=6&m=1003207066&s=170667a&w=0&h=IFnwt6z3kws55Ksbns09FtFl5nwf9kYu3xXF1XNMCa0=");
@@ -58,8 +58,14 @@ const NewPirate = (props) => {
     }
 
     return (
-        <div>
-            <h2>New Pirate</h2>
+        <div className="wrapper">
+            <div className="header">
+                <h2>New Pirate</h2>
+                <button
+                    onClick={() => navigate('/pirate')}>Crew Board</button>
+            </div>
+
+
             <form onSubmit={submitForm}>
                 <div>
                     <label>Pirate Name</label>
@@ -168,7 +174,7 @@ const NewPirate = (props) => {
                 </div>
 
                 <div>
-                    <label>Pirate Skill</label>
+                    <label>Crew Position :</label>
                     {
                         errs.pirateSkill ?
                             <span className="error-alert">{errs.pirateSkill.message}</span>
@@ -209,7 +215,7 @@ const NewPirate = (props) => {
                         checked={pirateVeteran}
                         onChange={(e) => setPirateVeteran(!pirateVeteran)} //updates state instantly
                     />
-                    <ToggleCannon />
+
                 </div>
                 <div>
                     <label>Does the Pirate have an eye-patch ?</label>
@@ -220,7 +226,7 @@ const NewPirate = (props) => {
                         checked={pirateEyePatch}
                         onChange={(e) => setPirateEyePatch(!pirateEyePatch)} //updates state instantly
                     />
-                    <ToggleEyePatch />
+
                 </div>
 
                 <div>
@@ -232,7 +238,7 @@ const NewPirate = (props) => {
                         checked={piratePegLeg}
                         onChange={(e) => setPiratePegLeg(!piratePegLeg)} //updates state instantly
                     />
-                    <TogglePegLeg />
+
                 </div>
                 <div>
                     <label>Does the Pirate have an hook-hand ?</label>
@@ -243,7 +249,7 @@ const NewPirate = (props) => {
                         checked={pirateHookHand}
                         onChange={(e) => setPirateHookHand(!pirateHookHand)} //updates state instantly
                     />
-                    <ToggleHookHand />
+
                 </div>
 
                 <div>
@@ -285,10 +291,7 @@ const NewPirate = (props) => {
                     type="submit"
                 >Add Pirate</button>
             </form>
-            <div>
-                <button
-                    onClick={() => navigate('/pirate')}>Previous page</button>
-            </div>
+
         </div>
     )
 }

@@ -1,5 +1,4 @@
 import './App.css';
-import React from 'react';
 import { Router } from '@reach/router';
 import NewPirate from './components/NewPirate';
 import EditPirate from './components/EditPirate';
@@ -8,10 +7,11 @@ import AllPirates from './components/AllPirates';
 
 
 
+
 function App() {
   const NotFound = () => {
     return (
-      <div>Route not Found</div>
+      <div>Route not Found: Make sure to include "/pirate/new" or "/pirate" at the end of your URL</div>
     )
   };
 
@@ -25,7 +25,7 @@ function App() {
         < NotFound default />
 
       </Router>
-  
+
     </div>
   );
 }
